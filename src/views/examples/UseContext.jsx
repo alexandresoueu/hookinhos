@@ -22,7 +22,7 @@ const UseContext = (props) => {
     if(number > 10) {
       setText('Pelé')
     }
-  }, [number])
+  }, [number, setText])
 
     return (
         <div className="UseContext">
