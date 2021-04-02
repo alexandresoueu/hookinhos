@@ -12,6 +12,14 @@ const reducer = (state, action) => {
   switch(action.type) {
     case 'addTwo': 
       return { ...state, number: state.number + 2 }
+    case 'numberMultiSeven':
+      return { ...state, number: state.number * 7 }
+    case 'numberDivTwentyFive':
+      return { ...state, number: state.number / 25 }
+    case 'numberInt':
+      return { ...state, number: parseInt(state.number)}
+    case 'numberAddN':
+      return { ...state, number: state.number + action.payload}
     case 'login':
       return { ...state, user: { name: action.payload } }
     default:
@@ -19,7 +27,7 @@ const reducer = (state, action) => {
   }
 }
 
-const UseReducer = (props) => {
+const UsingReducer = (props) => {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -40,10 +48,15 @@ const UseReducer = (props) => {
               <div>
                 <button className="btn" onClick={() => dispatch({type: 'login', payload: 'Nemo'})}>Login</button>
                 <button className="btn" onClick={() => dispatch({type: 'addTwo'}) }>+ 2</button>
+                <button className="btn" onClick={() => dispatch({type: 'numberMultiSeven'}) }>* 7</button>
+                <button className="btn" onClick={() => dispatch({type: 'numberDivTwentyFive'}) }>/ 25</button>
+                <button className="btn" onClick={() => dispatch({type: 'numberInt'}) }>INT</button>
+                <button className="btn" onClick={() => dispatch({type: 'numberAddN', payload: -9 }) }>-9</button>
+                <button className="btn" onClick={() => dispatch({type: 'numberAddN', payload: 11 }) }>+11</button>
               </div>
             </div>
         </div>
     )
 }
 
-export default UseReducer
+export default UsingReducer
